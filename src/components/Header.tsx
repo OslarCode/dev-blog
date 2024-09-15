@@ -19,15 +19,15 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="bg-white shadow-sm">
-      <nav className="container mx-auto px-4 py-4">
+    <header className="bg-white border-b border-gray-200">
+      <nav className="container mx-auto px-4 py-4 max-w-4xl">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold text-gray-800">
+          <Link href="/" className="text-2xl font-bold text-gray-800">
             Dev Blog
           </Link>
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex space-x-1">
             {navItems.map((item) => (
-              <Button key={item.href} variant="link" asChild>
+              <Button key={item.href} variant="ghost" size="sm" asChild>
                 <Link href={item.href}>{item.label}</Link>
               </Button>
             ))}
@@ -38,7 +38,11 @@ const Header: React.FC = () => {
             className="md:hidden"
             onClick={toggleMenu}
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
         </div>
         {isMenuOpen && (
