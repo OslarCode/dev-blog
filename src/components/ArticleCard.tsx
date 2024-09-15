@@ -5,9 +5,8 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, ClockIcon } from "lucide-react";
 
 interface ArticleCardProps {
@@ -28,10 +27,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   tags,
 }) => {
   return (
-    <Card className="h-full flex flex-col">
+    <Card className="hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
-        <CardTitle className="text-xl">{title}</CardTitle>
-        <div className="flex items-center text-sm text-gray-500 space-x-4">
+        <Link
+          href={`/articles/${id}`}
+          className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300"
+        >
+          {title}
+        </Link>
+        <div className="flex items-center text-sm text-gray-500 space-x-4 mt-2">
           <span className="flex items-center">
             <CalendarIcon className="w-4 h-4 mr-1" />
             {date}
@@ -44,21 +48,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       </CardHeader>
       <CardContent>
         <p className="text-gray-600">{excerpt}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
+      </CardContent>
+      <CardFooter>
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
-            <span
-              key={index}
-              className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded"
-            >
+            <Badge key={index} variant="secondary">
               {tag}
-            </span>
+            </Badge>
           ))}
         </div>
-      </CardContent>
-      <CardFooter className="mt-auto">
-        <Button asChild>
-          <Link href={`/articles/${id}`}>Leer más</Link>
-        </Button>
       </CardFooter>
     </Card>
   );
