@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Facebook, Twitter, LinkedIn } from "lucide-react";
+import { Share2 } from "lucide-react";
 
 interface ShareButtonsProps {
   url: string;
@@ -12,38 +12,30 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({ url, title }) => {
   const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = {
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
     linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`,
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title,
+          url: url,
+        });
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      window.open(shareLinks.twitter, "_blank");
+    }
+  };
+
   return (
-    <div className="flex space-x-2">
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => window.open(shareLinks.facebook, "_blank")}
-      >
-        <Facebook className="h-4 w-4" />
-        <span className="sr-only">Compartir en Facebook</span>
-      </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => window.open(shareLinks.twitter, "_blank")}
-      >
-        <Twitter className="h-4 w-4" />
-        <span className="sr-only">Compartir en Twitter</span>
-      </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => window.open(shareLinks.linkedin, "_blank")}
-      >
-        <LinkedIn className="h-4 w-4" />
-        <span className="sr-only">Compartir en LinkedIn</span>
-      </Button>
-    </div>
+    <Button variant="outline" size="sm" onClick={handleShare}>
+      <Share2 className="h-4 w-4 mr-2" />
+      Compartir
+    </Button>
   );
 };
 
