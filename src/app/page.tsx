@@ -14,42 +14,25 @@ const articles = [
     readTime: "5 min",
     tags: ["React", "JavaScript"],
   },
-  {
-    id: 2,
-    title: "Optimización de rendimiento en Next.js",
-    excerpt:
-      "Descubre técnicas avanzadas para mejorar la velocidad y la eficiencia de tu aplicación Next.js, desde la optimización de imágenes hasta la carga incremental.",
-    date: "2023-09-10",
-    readTime: "7 min",
-    tags: ["Next.js", "Performance"],
-  },
-  {
-    id: 3,
-    title: "TypeScript: Tips y trucos",
-    excerpt:
-      "Mejora tu productividad con estos consejos de TypeScript que te ayudarán a escribir código más seguro y mantenible en tus proyectos.",
-    date: "2023-09-05",
-    readTime: "6 min",
-    tags: ["TypeScript", "JavaScript"],
-  },
+  // ... (otros artículos)
 ];
 
 export default function Home() {
   return (
-    <div className="space-y-12">
-      <section className="text-center py-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg">
-        <h1 className="text-4xl font-bold mb-4">Bienvenido a Dev Blog</h1>
-        <p className="text-xl mb-8">
+    <div className="space-y-16">
+      <section className="text-center py-16">
+        <h1 className="text-5xl font-bold mb-4">Dev Blog</h1>
+        <p className="text-xl mb-8 text-gray-600 dark:text-gray-400">
           Explora las últimas tendencias y tecnologías en desarrollo web
         </p>
-        <Button asChild>
+        <Button asChild size="lg">
           <Link href="/articles">Explorar artículos</Link>
         </Button>
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold mb-6">Artículos recientes</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="text-3xl font-bold mb-8">Artículos recientes</h2>
+        <div className="space-y-12">
           {articles.map((article) => (
             <ArticleCard
               key={article.id}
@@ -62,8 +45,8 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="text-center mt-8">
-          <Button asChild variant="outline">
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" size="lg">
             <Link href="/articles">Ver todos los artículos</Link>
           </Button>
         </div>
