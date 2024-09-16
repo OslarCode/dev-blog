@@ -1,4 +1,6 @@
-import React from "react";
+// src/app/articles/page.tsx
+"use client";
+import React, { useState } from "react";
 import ArticleCard from "@/components/ArticleCard";
 
 // Simulamos algunos artículos para el ejemplo
@@ -32,6 +34,14 @@ const articles = [
 ];
 
 export default function ArticlesPage() {
+  const [expandedArticleId, setExpandedArticleId] = useState<number | null>(
+    null
+  );
+
+  const toggleArticle = (id: number) => {
+    setExpandedArticleId(expandedArticleId === id ? null : id); // Alterna el artículo expandido
+  };
+
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold">Artículos</h1>
@@ -42,9 +52,12 @@ export default function ArticlesPage() {
             id={article.id}
             title={article.title}
             excerpt={article.excerpt}
+            content={article.content} // Pasa el contenido completo del artículo
             date={article.date}
             readTime={article.readTime}
             tags={article.tags}
+            isExpanded={expandedArticleId === article.id} // Verifica si el artículo está expandido
+            onToggle={() => toggleArticle(article.id)} // Alterna expansión
           />
         ))}
       </div>

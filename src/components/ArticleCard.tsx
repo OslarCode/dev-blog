@@ -1,3 +1,4 @@
+// src/components/ArticleCard.tsx
 import React from "react";
 import Link from "next/link";
 import {
@@ -13,24 +14,29 @@ interface ArticleCardProps {
   id: number;
   title: string;
   excerpt: string;
+  content: string; // Nuevo: Contenido completo del artículo
   date: string;
   readTime: string;
   tags: string[];
+  isExpanded: boolean; // Nuevo: Estado de expansión
+  onToggle: () => void; // Nuevo: Función para alternar expansión
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({
-  id,
   title,
   excerpt,
+  content,
   date,
   readTime,
   tags,
+  isExpanded,
+  onToggle,
 }) => {
   return (
     <Card className="hover:shadow-lg transition-shadow duration-300">
       <CardHeader>
         <Link
-          href={`/articles/${id}`}
+          href={`/articles/${title}`}
           className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300"
         >
           {title}
@@ -47,9 +53,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-600">{excerpt}</p>
+        <p className="text-gray-600">{isExpanded ? content : excerpt}</p>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex justify-between items-center">
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Badge key={index} variant="secondary">
@@ -57,6 +63,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             </Badge>
           ))}
         </div>
+        <button
+          onClick={onToggle}
+          className="text-blue-500 hover:text-blue-700 transition-colors duration-300 text-sm"
+        >
+          {isExpanded ? "Mostrar menos" : "Leer más"}
+        </button>
       </CardFooter>
     </Card>
   );
