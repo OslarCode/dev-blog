@@ -11,32 +11,33 @@ import { Badge } from "@/components/ui/badge";
 import { CalendarIcon, ClockIcon } from "lucide-react";
 
 interface ArticleCardProps {
-  id: number;
   title: string;
+  slug: string; // Usar slug en lugar de id
   excerpt: string;
-  content: string; // Nuevo: Contenido completo del artículo
   date: string;
   readTime: string;
   tags: string[];
-  isExpanded: boolean; // Nuevo: Estado de expansión
-  onToggle: () => void; // Nuevo: Función para alternar expansión
+  isExpanded?: boolean; // Opcional
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = ({
   title,
+  slug, // Usar slug en lugar de id
   excerpt,
-  content,
   date,
   readTime,
   tags,
-  isExpanded,
-  onToggle,
+  isExpanded = false, // Valor predeterminado
 }) => {
   return (
-    <Card className="hover:shadow-lg transition-shadow duration-300">
+    <Card
+      className={`hover:shadow-lg transition-shadow duration-300 ${
+        isExpanded ? "expanded" : ""
+      }`}
+    >
       <CardHeader>
         <Link
-          href={`/articles/${title}`}
+          href={`/articles/${slug}`} // Cambiar la ruta para usar el slug
           className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300"
         >
           {title}
@@ -53,7 +54,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-600">{isExpanded ? content : excerpt}</p>
+        <p className="text-gray-600">{excerpt}</p>
       </CardContent>
       <CardFooter className="flex justify-between items-center">
         <div className="flex flex-wrap gap-2">
@@ -63,12 +64,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             </Badge>
           ))}
         </div>
-        <button
-          onClick={onToggle}
-          className="text-blue-500 hover:text-blue-700 transition-colors duration-300 text-sm"
-        >
-          {isExpanded ? "Mostrar menos" : "Leer más"}
-        </button>
       </CardFooter>
     </Card>
   );

@@ -1,23 +1,13 @@
+// src/app/page.tsx
 import React from "react";
 import Link from "next/link";
-import ArticleCard from "@/components/ArticleCard";
+import ArticleList from "@/components/articles/ArticleList";
+import { getArticles } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 
-// Simulamos algunos artículos para el ejemplo
-const articles = [
-  {
-    id: 1,
-    title: "Introducción a React Hooks",
-    excerpt:
-      "Aprende cómo los Hooks pueden simplificar tu código en React y mejorar la reutilización de lógica en tus componentes.",
-    date: "2023-09-15",
-    readTime: "5 min",
-    tags: ["React", "JavaScript"],
-  },
-  // ... (otros artículos)
-];
+export default async function HomePage() {
+  const { articles } = await getArticles(1, 3); // Obtiene los 3 artículos más recientes
 
-export default function Home() {
   return (
     <div className="space-y-16">
       <section className="text-center py-16">
@@ -32,19 +22,7 @@ export default function Home() {
 
       <section>
         <h2 className="text-3xl font-bold mb-8">Artículos recientes</h2>
-        <div className="space-y-12">
-          {articles.map((article) => (
-            <ArticleCard
-              key={article.id}
-              id={article.id}
-              title={article.title}
-              excerpt={article.excerpt}
-              date={article.date}
-              readTime={article.readTime}
-              tags={article.tags}
-            />
-          ))}
-        </div>
+        <ArticleList articles={articles} />
         <div className="text-center mt-12">
           <Button asChild variant="outline" size="lg">
             <Link href="/articles">Ver todos los artículos</Link>
