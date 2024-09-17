@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📖 Dev Blog
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-v12.2.3-blue)
+![React](https://img.shields.io/badge/React-18.0.0-blue)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.0.23-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-v4.4.2-blue)
 
-First, run the development server:
+Bienvenido a **Dev Blog**, un blog desarrollado con tecnologías modernas como **React**, **Next.js**, **Tailwind CSS** y **TypeScript**. Este proyecto tiene como objetivo compartir conocimientos sobre desarrollo web, buenas prácticas, y artículos técnicos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Funcionalidades
+
+- Listado de artículos con paginación
+- Visualización de categorías y tags
+- Soporte para bloques de código en artículos
+- Artículos relacionados al final de cada post
+- Sistema de búsqueda y navegación por categorías
+
+## 🛠️ Tecnologías utilizadas
+
+- **React**: Una biblioteca para construir interfaces de usuario.
+- **Next.js**: Un framework de React con soporte para SSR y SSG.
+- **Tailwind CSS**: Un framework CSS para diseño moderno y responsivo.
+- **TypeScript**: Superset tipado de JavaScript para mayor seguridad en el código.
+- **Markdown**: Para escribir los artículos de manera sencilla y flexible.
+
+## 📂 Estructura del proyecto
+
+````plaintext
+Dev-blog/
+├── .next/                 # Archivos generados por Next.js
+├── node_modules/          # Dependencias del proyecto
+├── public/                # Imágenes y recursos estáticos
+├── src/                   # Código fuente del proyecto
+│   ├── app/               # Páginas y rutas principales
+│   ├── components/        # Componentes reutilizables
+│   ├── content/           # Artículos en Markdown
+│   ├── lib/               # Lógica de utilidades
+│   ├── styles/            # Archivos de estilo global
+│   └── types/             # Tipos de TypeScript
+└── ...
+
+Aquí te dejo un ejemplo para el archivo `.gitignore` y el archivo `README.md` para tu proyecto de blog.
+
+### Archivo `.gitignore`
+```gitignore
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next/
+out/
+build/
+*.log
+
+# Tailwind CSS
+tailwind.config.js
+tailwind.config.ts
+
+# Configuración de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Directorios de IDEs/editores
+.vscode/
+.idea/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+````
+
+### Archivo `README.md`
+
+````markdown
+# 📖 Dev Blog
+
+![Next.js](https://img.shields.io/badge/Next.js-v12.2.3-blue)
+![React](https://img.shields.io/badge/React-18.0.0-blue)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3.0.23-green)
+![TypeScript](https://img.shields.io/badge/TypeScript-v4.4.2-blue)
+
+Bienvenido a **Dev Blog**, un blog desarrollado con tecnologías modernas como **React**, **Next.js**, **Tailwind CSS** y **TypeScript**. Este proyecto tiene como objetivo compartir conocimientos sobre desarrollo web, buenas prácticas, y artículos técnicos.
+
+## 🚀 Funcionalidades
+
+- Listado de artículos con paginación
+- Visualización de categorías y tags
+- Soporte para bloques de código en artículos
+- Artículos relacionados al final de cada post
+- Sistema de búsqueda y navegación por categorías
+
+## 🛠️ Tecnologías utilizadas
+
+- **React**: Una biblioteca para construir interfaces de usuario.
+- **Next.js**: Un framework de React con soporte para SSR y SSG.
+- **Tailwind CSS**: Un framework CSS para diseño moderno y responsivo.
+- **TypeScript**: Superset tipado de JavaScript para mayor seguridad en el código.
+- **Markdown**: Para escribir los artículos de manera sencilla y flexible.
+
+## 📂 Estructura del proyecto
+
+```plaintext
+Dev-blog/
+├── .next/                 # Archivos generados por Next.js
+├── node_modules/          # Dependencias del proyecto
+├── public/                # Imágenes y recursos estáticos
+├── src/                   # Código fuente del proyecto
+│   ├── app/               # Páginas y rutas principales
+│   ├── components/        # Componentes reutilizables
+│   ├── content/           # Artículos en Markdown
+│   ├── lib/               # Lógica de utilidades
+│   ├── styles/            # Archivos de estilo global
+│   └── types/             # Tipos de TypeScript
+└── ...
+```
+````
+
+## 📝 Cómo ejecutar el proyecto
+
+1. Clona este repositorio:
+
+   ```bash
+   git clone https://github.com/tu-usuario/dev-blog.git
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Abre tu navegador y ve a `http://localhost:3000`.
+
+## ✍️ Contribuir
+
+¡Las contribuciones son bienvenidas! Si tienes alguna idea o encuentras un error, no dudes en abrir un issue o hacer un pull request.
+
+## 📧 Contacto
+
+Si tienes alguna pregunta o sugerencia, puedes contactarme en:
+
+- **Email**: [oslar](mailto:oslar1980@gmail.com)
+- **Twitter**: [@Oartificacial.tk](https://x.com/OArtificacialTk)
+
+---
+
+_Desarrollado con ❤️ por [Öslar]_
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
