@@ -1,9 +1,12 @@
 // src/app/articles/[slug]/page.tsx
+import React from "react";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import MarkdownRenderer from "@/components/articles/MarkdownRendered";
+import { Badge } from "@/components/ui/badge";
+//import { remark } from "remark";
+//import html from "remark-html";
 
 // Función para obtener el contenido del artículo desde un archivo Markdown usando el slug
 async function getArticleBySlug(slug: string) {
@@ -18,12 +21,12 @@ async function getArticleBySlug(slug: string) {
   console.log(`File contents: ${fileContents}`); // Debugging
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
+  //const processedContent = await remark().use(html).process(content);
+  //const contentHtml = processedContent.toString();
 
   return {
     data,
-    contentHtml,
+    content, //contentHtml,
   };
 }
 
@@ -73,10 +76,22 @@ export default async function ArticlePage({
       <div className="text-sm text-gray-500">
         {article.data.date} • {article.data.readTime}
       </div>
-      <div
+      {/*Nuevo*/}
+      <div className="mb-6">
+        {article.data.tags.map((tag: string) => (
+          <Badge key={tag} className="mr-2">
+            {tag}
+          </Badge>
+        ))}
+      </div>
+      <div className="markdown-content">
+        <MarkdownRenderer content={article.content} />
+      </div>
+
+      {/*<div
         className="mt-4"
         dangerouslySetInnerHTML={{ __html: article.contentHtml }}
-      />
+      />*/}
     </div>
   );
 }
